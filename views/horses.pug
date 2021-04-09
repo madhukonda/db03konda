@@ -2,7 +2,8 @@ extends layout
  
 block content
   h1= title
-  - let horses=[{horsename:"Arabian horse",habitat:"deserts sandsoil",classification:"Equus",price:20000},{horsename:"American Quarter Horse",habitat:"cliffs",classification:"celiuslus",price:25000},{horsename:"Morgan",habitat:"cooling",classification:"Persian",price:10000}]
+  //- - let horses=[{horsename:"Arabian horse",habitat:"deserts sandsoil",classification:"Equus",price:20000},{horsename:"American Quarter Horse",habitat:"cliffs",classification:"celiuslus",price:25000},{horsename:"Morgan",habitat:"cooling",classification:"Persian",price:10000}]
+  - let horses= results;
   div(class="container-fluid mt-3")
   div(class="row")
     each horse,index in horses
