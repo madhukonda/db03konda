@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+
+  - let horseid = toShow._id
+  - let horsename = toShow.horsename
+  - let habitat = toShow.habitat 
+  - let classification = toShow.classification
+  - let price = toShow.price 
+
+  div
+    div.row
+      div(class='costumeAttr mr-3') Horse ID is:
+      div(class='hrse den') #{horseid}
+    div.row
+      div(class='costumeAttr mr-3') Horse horsename is:
+      div(class='hrse') #{horsename}
+    div.row
+      div(class='costumeAttr mr-3') Horse habitat is:
+      div(class='hrse') #{habitat}
+    div.row
+      div(class='costumeAttr mr-3') Horse classification is:
+      div(class='hrse') #{classification}
+    div.row
+      div(class='costumeAttr mr-3') Horse price is:
+      div(class='hrse') #{price}
+

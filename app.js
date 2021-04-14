@@ -34,7 +34,7 @@ async function recreateDB() {
   let instance3 = new horse({ horsename: "Morgan", habitat: "cooling", classification: "Persian", price: 10000 });
   instance3.save(function (err, doc) {
     if (err) return console.error(err);
-    console.log("Thord object saved")
+    console.log("Third object saved")
   });
 }
 let reseed = true;

@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='HorseForm', action="/resource/horses/", method="POST")
+    div.form-group
+        label.costumeAttr(for='horsename') Horse name
+        input#horsename(type='text', name='horsename')
+    div.form-group
+        label.costumeAttr(for='habitat') habitat
+        input#habitat(type='text', name='habitat')
+    div.form-group
+        label.costumeAttr(for='classification') classification
+        input#classification(type='text', name='classification')
+    div.form-group
+        label.costumeAttr(for='price') price
+        input#price(type='number', name='price')    
+    input(type="submit")
+
+  script.
+    document.forms['HorseForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });
