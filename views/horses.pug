@@ -1,16 +1,25 @@
 extends layout
  
 block content
+  div() Horse create
+    -let location = `dispatch(\"/horses/create")`
+    button.btn( class="btn-primary ml-1", onclick= location) Create
   h1= title
   //- - let horses=[{horsename:"Arabian horse",habitat:"deserts sandsoil",classification:"Equus",price:20000},{horsename:"American Quarter Horse",habitat:"cliffs",classification:"celiuslus",price:25000},{horsename:"Morgan",habitat:"cooling",classification:"Persian",price:10000}]
   - let horses= results;
-  div(class="container-fluid mt-3")
-  div(class="row")
-    each horse,index in horses
-        div(class="col-sm-4 m-1 p-3" style=("font-weight:bolder") onclick=`buy(${index})`) #{horse.horsename} - #{horse.habitat} - #{horse.classification} - #{horse.price}
+
+  div(class="container-fluid")
+  div(class="row m-4")
+    each horse in horses
+      - let destination = `dispatch(\"/horses/update?id=${horse._id}\")`
+      - let destinationDelete = `dispatch(\"/horses/delete?id=${horse._id}\")`
+      - let destinationUpdate = `dispatch(\"/horses/detail?id=${horse._id}\")`
+        div(class="col-sm-12", class="m-1") Horse #{horse.horsename}(#{horse.habitat}) is #{horse.classification} #{horse.price}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-primary ml-1", onclick= destinationDelete) Delete
+          button.btn( class="btn-primary ml-1", onclick= destinationUpdate) Details
+
   script.
-     
-      function buy(itemNo)
-      {
-        alert(`You purchased Item ${itemNo+1}`)
-      }
+    function dispatch(path){
+      window.location.href=path
+    }

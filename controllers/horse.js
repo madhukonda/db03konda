@@ -37,7 +37,8 @@ exports.horse_create_post = async function (req, res) {
         res.send(result);
     }
     catch (err) {
-        res.error(500, `{"error": ${err}}`);
+        res.status(500)
+        res.send(err)
     }
 };
 // Handle Horse delete form on DELETE.
